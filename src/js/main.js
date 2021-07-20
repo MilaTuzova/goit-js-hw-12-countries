@@ -13,7 +13,7 @@ const DEBOUNCE_DELAY = 500;
 refs.searchBox.addEventListener('input', debounce(onSeachCountry, DEBOUNCE_DELAY));
 
 function onSeachCountry(e) {
-
+    // удаляем разметку //
     refs.countryInfo.innerHTML = '';
     refs.countryList.innerHTML = '';
 
@@ -31,7 +31,8 @@ function renderCountry(country) {
         refs.countryInfo.insertAdjacentHTML('beforeend', countryInfoTpl(country[0]));
     } else
     if (country.length >= 2 && country.length <= 10) {
-        refs.countryList.insertAdjacentHTML('afterbegin', contryListTpl(country));
+        refs.countryList.insertAdjacentHTML('beforeend', contryListTpl(country));
+
     } else
     if (country.length > 10) {
         Notiflix.Notify.info('Too many matches found. Please enter a more specific name');
